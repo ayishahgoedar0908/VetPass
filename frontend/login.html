@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VetPass | Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero stack" style="max-width: 520px; margin: 8vh auto 0;">
+      <div class="badge">VetPass Access</div>
+      <div>
+        <h1 class="page-title">Login to your account</h1>
+        <p class="muted">Use your email and password to open the dashboard.</p>
+      </div>
+
+      <form id="loginForm" class="form-card stack" autocomplete="on">
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="password" required>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Sign in</button>
+
+        <p id="loginMessage" class="alert" hidden></p>
+        <p class="muted" style="margin: 0;">No account yet? <a href="register.html">Create one here</a>.</p>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

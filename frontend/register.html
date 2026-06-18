@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VetPass | Register</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero stack" style="max-width: 560px; margin: 8vh auto 0;">
+      <div class="badge">VetPass Access</div>
+      <div>
+        <h1 class="page-title">Create your account</h1>
+        <p class="muted">Register a new user and start managing pets right away.</p>
+      </div>
+
+      <form id="registerForm" class="form-card stack" autocomplete="on">
+        <div class="field">
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Choose a password" required>
+        </div>
+
+        <div class="field">
+          <label for="confirmPassword">Confirm password</label>
+          <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Repeat your password" required>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Create account</button>
+
+        <p id="registerMessage" class="alert" hidden></p>
+        <p class="muted" style="margin: 0;">Already have an account? <a href="login.html">Sign in here</a>.</p>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/register.js"></script>
+</body>
+</html>
