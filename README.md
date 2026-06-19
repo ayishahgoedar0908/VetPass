@@ -55,8 +55,6 @@ VetPass makes it:
 
 ### Tools & Hosting
 - GitHub
-- Vercel (Frontend)
-- Render / Railway (Backend)
 
 ---
 
@@ -115,4 +113,4 @@ VetPass/
 
 ### 📥 1. Clone the repository
 ```bash
-git clone 
+git clone https://github.com/ayishahgoedar0908/VetPass.git
