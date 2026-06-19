@@ -16,8 +16,6 @@ VetPass is a modern full-stack web application that replaces physical pet vaccin
 
 ## 🚀 Overview
 
-## 🚀 Overview
-
 VetPass is a digital pet healthcare management system developed to improve the way veterinary records are stored and accessed. Many pet owners still rely on paper-based vaccination booklets, which can easily be lost, damaged, or become outdated. VetPass addresses this problem by providing a secure and centralized web platform where all pet health information can be managed digitally.
 
 The application enables veterinarians to register pets, maintain vaccination records, add medical notes, track treatments, and manage healthcare information through a modern dashboard. Pet owners can securely log in to view their pets' profiles, vaccination history, and medical records in real time.
