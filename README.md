@@ -8,7 +8,7 @@ VetPass is a modern full-stack web application that replaces physical pet vaccin
 
 ---
 
-![VetPass Banner](https://via.placeholder.com/1000x300?text=VetPass+Digital+Pet+Passport)
+![VetPass Banner](https://github.com/ayishahgoedar0908/VetPass/blob/c1d5bbb441e331bdf7b552ed4786fb1105af258a/VetPass.png)
 
 </div>
 
