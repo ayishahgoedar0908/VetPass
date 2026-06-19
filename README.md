@@ -7,7 +7,6 @@
 VetPass is a modern full-stack web application that replaces physical pet vaccination booklets with a secure, digital system.
 
 ---
-
 ![VetPass Banner](https://github.com/ayishahgoedar0908/VetPass/blob/c1d5bbb441e331bdf7b552ed4786fb1105af258a/VetPass.png)
 
 </div>
@@ -72,55 +71,8 @@ VetPass makes it:
 - Thunder Client / Postman
 
 ## 📁 Project Structure
-VetPass/
-│
-├── backend/
-│   │
-│   ├── server.js
-│   ├── package.json
-│   ├── package-lock.json
-│   │
-│   ├── config/
-│   │   └── db.js
-│   │
-│   ├── routes/
-│   │   ├── authRoutes.js
-│   │   ├── petRoutes.js
-│   │   ├── vaccinationRoutes.js
-│   │   └── medicalRoutes.js
-│   │
-│   ├── middlewares/
-│   │   └── auth.js
-│   │
-│   └── sql/
-│       └── schema.sql
-│
-│
-├── frontend/
-│   │
-│   ├── login.html
-│   ├── dashboard.html
-│   ├── pet-profile.html
-│   ├── vaccinations.html
-│   ├── medical-history.html
-│   ├── qr.html
-│   │
-│   ├── css/
-│   │   └── style.css
-│   │
-│   ├── js/
-│   │   ├── login.js
-│   │   ├── pets.js
-│   │   ├── dashboard.js
-│   │   └── api.js
-│   │
-│   └── img/
-│
-│
-├── .gitignore
-├── .env
-├── .env.example
-└── README.md
+![VetPass ProjectStructure].(https://github.com/ayishahgoedar0908/VetPass/blob/984334b9b43dd30f3e53ae13815fa3f5cda1e21a/Vetpass_projectstructure.png)
+
 
 ## ⚙️ Local Setup
 
