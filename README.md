@@ -71,7 +71,7 @@ VetPass makes it:
 - Thunder Client / Postman
 
 ## 📁 Project Structure
-![VetPass ProjectStructure].(https://github.com/ayishahgoedar0908/VetPass/blob/984334b9b43dd30f3e53ae13815fa3f5cda1e21a/Vetpass_projectstructure.png)
+![VetPass ProjectStructure](https://github.com/ayishahgoedar0908/VetPass/blob/984334b9b43dd30f3e53ae13815fa3f5cda1e21a/Vetpass_projectstructure.png)
 
 
 ## ⚙️ Local Setup
