@@ -38,6 +38,21 @@ router.post('/', async (req, res) => {
   if (!name || !species) {
     return res.status(400).json({ error: 'name en species zijn verplicht' });
   }
+  if (name.length < 2) {
+  return res.status(400).json({ error: 'name is too short' });
+}
+
+if (species.length < 2) {
+  return res.status(400).json({ error: 'species is too short' });
+}
+
+if (microchip_number && microchip_number.length < 5) {
+  return res.status(400).json({ error: 'invalid microchip number' });
+}
+
+if (birth_date && isNaN(Date.parse(birth_date))) {
+  return res.status(400).json({ error: 'invalid birth_date' });
+}
 
   try {
     const userId = req.user.role === 'admin' && owner_id ? owner_id : req.user.id;
