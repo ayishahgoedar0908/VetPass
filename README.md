@@ -73,9 +73,56 @@ VetPass makes it:
 ## 📁 Project Structure
 ![VetPass ProjectStructure](https://github.com/ayishahgoedar0908/VetPass/blob/984334b9b43dd30f3e53ae13815fa3f5cda1e21a/Vetpass_projectstructure.png)
 
+# ⚙️ Requirements
+
+Before running VetPass locally, make sure you have the following installed:
+
+- Node.js (v18 or higher recommended)
+- npm (comes with Node.js)
+- MySQL Server (v8.0 or higher)
+- Git
+- Visual Studio Code (recommended)
+
+You can verify your installations with:
+
+```bash
+node -v
+npm -v
+mysql --version
+git --version
+```
 
 ## ⚙️ Local Setup
 
 ### 📥 1. Clone the repository
+
 ```bash
 git clone https://github.com/ayishahgoedar0908/VetPass.git
+cd VetPass
+```
+
+### 📦 2. Install Dependencies
+
+```bash
+cd backend
+npm install
+```
+
+### ▶️ 3. Start the Server
+
+```bash
+npm start
+```
+
+The application will run on:
+
+```
+http://localhost:3000
+```
+
+# 📖 Usage
+
+1. Register an account.
+2. Log in to the system.
+3. Add a pet profile.
+4. Manage vaccination records.
