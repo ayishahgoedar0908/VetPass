@@ -11,7 +11,27 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  res.status(501).json({ error: 'Medical record creation not implemented yet' });
+  const { pet_id, name, dosage, notes, date } = req.body;
+
+  if (!pet_id) {
+    return res.status(400).json({ error: 'pet_id is required' });
+  }
+
+  if (!name || name.length < 2) {
+    return res.status(400).json({ error: 'name is invalid' });
+  }
+
+  if (!dosage) {
+    return res.status(400).json({ error: 'dosage is required' });
+  }
+
+  if (date && isNaN(Date.parse(date))) {
+    return res.status(400).json({ error: 'invalid date' });
+  }
+
+  return res.status(201).json({
+    message: 'Medical record validation passed (not saved yet)'
+  });
 });
 
 router.get('/:id', (req, res) => {

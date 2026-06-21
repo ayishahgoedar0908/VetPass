@@ -11,7 +11,27 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  res.status(501).json({ error: 'Vaccination creation not implemented yet' });
+  const { pet_id, vaccine_name, date, notes } = req.body;
+
+  if (!pet_id) {
+    return res.status(400).json({ error: 'pet_id is required' });
+  }
+
+  if (!vaccine_name || vaccine_name.length < 2) {
+    return res.status(400).json({ error: 'vaccine name is invalid' });
+  }
+
+  if (!date) {
+    return res.status(400).json({ error: 'date is required' });
+  }
+
+  if (date && isNaN(Date.parse(date))) {
+    return res.status(400).json({ error: 'invalid date' });
+  }
+
+  return res.status(201).json({
+    message: 'Vaccination validation passed (not saved yet)'
+  });
 });
 
 router.get('/:id', (req, res) => {
