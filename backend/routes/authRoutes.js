@@ -7,15 +7,34 @@ require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
 const db = require('../config/db');
 const auth = require('../middlewares/auth');
+const {
+    validateRequest,
+    requiredEmail,
+    requiredPassword,
+    requiredString,
+    optionalEnumValue,
+} = require('../middlewares/validateRequest');
 
 const router = express.Router();
 
-router.post('/register', async (req, res) => {
-    const { name, email, password, role } = req.body;
+const registerSchema = {
+    body: {
+        name: requiredString('name', { min: 2, max: 100 }),
+        email: requiredEmail,
+        password: requiredPassword,
+        role: optionalEnumValue('role', ['user', 'admin']),
+    },
+};
 
-    if (!name || !email || !password) {
-        return res.status(400).json({ error: 'name, email en password zijn verplicht' });
-    }
+const loginSchema = {
+    body: {
+        email: requiredEmail,
+        password: requiredString('password', { min: 1, max: 255 }),
+    },
+};
+
+router.post('/register', validateRequest(registerSchema), async (req, res) => {
+    const { name, email, password, role } = req.body;
 
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -38,12 +57,8 @@ router.post('/register', async (req, res) => {
     }
 });
 
-router.post('/login', async (req, res) => {
+router.post('/login', validateRequest(loginSchema), async (req, res) => {
     const { email, password } = req.body;
-
-    if (!email || !password) {
-        return res.status(400).json({ error: 'email en password zijn verplicht' });
-    }
 
     try {
         const [rows] = await db.execute('SELECT id, name, email, password, role FROM users WHERE email = ?', [email]);

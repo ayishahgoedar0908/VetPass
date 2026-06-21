@@ -2,10 +2,53 @@ const express = require('express');
 const db = require('../config/db');
 
 const auth = require('../middlewares/auth');
+const {
+  validateRequest,
+  requiredInteger,
+  optionalInteger,
+  requiredString,
+  optionalString,
+  optionalDate,
+  optionalEnumValue,
+} = require('../middlewares/validateRequest');
 
 const router = express.Router();
 
 router.use(auth);
+
+const idParamSchema = {
+  params: {
+    id: requiredInteger('id', { min: 1 }),
+  },
+};
+
+const createPetSchema = {
+  body: {
+    owner_id: optionalInteger('owner_id', { min: 1 }),
+    name: requiredString('name', { min: 2, max: 100 }),
+    species: requiredString('species', { min: 2, max: 60 }),
+    breed: optionalString('breed', { max: 100 }),
+    birthdate: optionalDate('birthdate'),
+    birth_date: optionalDate('birth_date'),
+    gender: optionalEnumValue('gender', ['male', 'female', 'unknown']),
+    microchip_number: optionalString('microchip_number', { min: 5, max: 64 }),
+    notes: optionalString('notes', { max: 5000 }),
+  },
+};
+
+const updatePetSchema = {
+  params: idParamSchema.params,
+  body: {
+    name: optionalString('name', { min: 2, max: 100 }),
+    species: optionalString('species', { min: 2, max: 60 }),
+    breed: optionalString('breed', { max: 100 }),
+    birthdate: optionalDate('birthdate'),
+    birth_date: optionalDate('birth_date'),
+    gender: optionalEnumValue('gender', ['male', 'female', 'unknown']),
+    microchip_number: optionalString('microchip_number', { min: 5, max: 64 }),
+    notes: optionalString('notes', { max: 5000 }),
+  },
+};
 
 router.get('/', async (req, res) => {
   try {
@@ -22,7 +65,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', validateRequest(createPetSchema), async (req, res) => {
   const {
     owner_id,
     name,
@@ -34,25 +77,6 @@ router.post('/', async (req, res) => {
     microchip_number,
     notes,
   } = req.body;
-
-  if (!name || !species) {
-    return res.status(400).json({ error: 'name en species zijn verplicht' });
-  }
-  if (name.length < 2) {
-  return res.status(400).json({ error: 'name is too short' });
-}
-
-if (species.length < 2) {
-  return res.status(400).json({ error: 'species is too short' });
-}
-
-if (microchip_number && microchip_number.length < 5) {
-  return res.status(400).json({ error: 'invalid microchip number' });
-}
-
-if (birth_date && isNaN(Date.parse(birth_date))) {
-  return res.status(400).json({ error: 'invalid birth_date' });
-}
 
   try {
     const userId = req.user.role === 'admin' && owner_id ? owner_id : req.user.id;
@@ -84,7 +108,7 @@ if (birth_date && isNaN(Date.parse(birth_date))) {
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', validateRequest(idParamSchema), async (req, res) => {
   try {
     const [rows] = await db.execute('SELECT * FROM pets WHERE id = ?', [req.params.id]);
 
@@ -105,7 +129,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', validateRequest(updatePetSchema), async (req, res) => {
   const {
     name,
     species,
@@ -157,7 +181,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', validateRequest(idParamSchema), async (req, res) => {
   try {
     const [existingRows] = await db.execute('SELECT * FROM pets WHERE id = ?', [req.params.id]);
 
